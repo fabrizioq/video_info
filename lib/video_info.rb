@@ -38,7 +38,9 @@ class VideoInfo
   end
 
   def ==(other)
-    url == other.url && video_id == other.video_id
+    if other.respond_to?(:url) && other.respond_to?(:video_id)
+      url == other.url && video_id == other.video_id
+    end
   end
 
   @@provider_api_keys = {}
